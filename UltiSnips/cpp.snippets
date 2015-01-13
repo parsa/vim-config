@@ -1,0 +1,156 @@
+snippet main
+int main(int argc, char* argv[])
+{
+	${0}
+	return 0;
+}
+endsnippet
+
+snippet if "if"
+if (${1:condition}) {
+	${0}
+}
+endsnippet
+
+snippet while "while loop"
+while (${1:condition}) {
+	${0}
+}
+endsnippet
+
+snippet do "do while loop"
+do {
+	${0}
+} while (${1:condition});
+endsnippet
+
+snippet switch "switch case"
+switch (${1:expression}) {
+	case ${2:condition}:
+		$0
+		break;
+}
+endsnippet
+
+# Casts
+snippet cast "Static Cast"
+static_cast<${1}>(${2})${0}
+endsnippet
+
+snippet cast "Reinterpret Cast"
+reinterpret_cast<${1}>(${2})${0}
+endsnippet
+
+snippet cast "Dynamic Cast"
+dynamic_cast<${1}>(${2})${0}
+endsnippet
+
+snippet cast "Const Cast"
+const_cast<${1}>(${2})${0}
+endsnippet
+
+snippet ifhack "Run-time debug option"
+static bool hack = false;
+if (hack)
+{
+	${1}
+}${0}
+endsnippet
+
+snippet map "std::map"
+std::map<${1:key}, ${2:value}> ${3};${0}
+endsnippet
+
+snippet vector "std::vector"
+std::vector<${1:char}> ${2};${0}
+endsnippet
+
+snippet ns "namespace"
+namespace ${1:`!p snip.rv = snip.basename`} {
+	${0}
+} /* namespace $1 */
+endsnippet
+
+snippet class "class"
+class ${1:`!p snip.rv = snip.basename`} 
+{
+public:
+	$1(${2});
+	${3:virtual }~$1();
+private:
+	${4:/* data */}
+};${0}
+endsnippet
+
+snippet mfun "member function implementations"
+${4:void} ${1:`!p snip.rv = snip.basename`}::${2:memberFunction}(${3}) {
+	${5:return};${0}
+}
+endsnippet
+
+snippet dtor "destructor"
+virtual ~${1:`!p snip.rv = snip.basename`}();${0}
+endsnippet
+
+snippet ruleof3 "Copy ctor and copy assignment for Rule of three"
+private:
+	// Private and unimplemented to forbid use.
+	${1:`!p snip.rv = snip.basename`}(const $1&);${0}
+	$1& operator=(const $1&);
+endsnippet
+
+snippet for "for loop"
+for (${1:init}; ${2:while_condition}; ${3:update}) {
+	${0}
+}
+endsnippet
+
+snippet fori "for loop"
+for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+	${0}
+}
+endsnippet
+
+snippet fore "C++-11 auto iterator"
+for (auto ${1:i} = $1.begin(); $1 != $1.end(); ++$1) {
+	${2:std::cout << *$1 << std::endl;}${0}
+}
+endsnippet
+
+snippet iter "std::iterator for-each loop"
+for (${1:vector<T>}::iterator i = ${2:items.}begin(); i != ${2}end(); ++i) ${0}
+endsnippet
+
+snippet iterr "std::reverse_iterator for-each loop"
+for (${1:vector<T>}::reverse_iterator i = ${2:items.}rbegin(); i != ${2}rend(); ++i) ${0}
+endsnippet
+
+snippet iterc "std::const_iterator for-each loop"
+for (${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin(); $4 != $5.end(); ++$4) {
+	${0}
+}
+endsnippet
+
+snippet itercr "std::const_reverse_iterator for-each loop"
+for (${1:std::vector}<${2:type}>::${3:const_reverse_iterator} ${4:i} = ${5:container}.rbegin(); $4 != $5.rend(); ++$4) {
+	${0}
+}
+endsnippet
+
+snippet ld "one-line lambda function"
+[${1}](${2}){ ${3} }
+endsnippet
+
+snippet ld "multi-line lambda function"
+[${1}](${2}) {
+	${3}
+}
+endsnippet
+
+snippet cout "cout"
+${1:std::}cout << ${1} << $1endl;${0}
+endsnippet
+
+snippet cin "cin"
+${1:std::}cin >> ${1};${0}
+endsnippet
