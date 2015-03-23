@@ -201,11 +201,27 @@ set backupdir=~/.vim/bkp//
 set directory=~/.vim/swp//
 
 
+"""""""""
+" seach "
+"""""""""
+
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@<CR><CR>
+
+
+function! s:VSetSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
+
 """"""""""""
 " commands "
 """"""""""""
 
 command Ww execute "set buftype= | silent w"
+command WriteSudo execute "w !sudo cat >%"
 
 " word count, taken from
 " http://stackoverflow.com/questions/114431/fast-word-count-function-in-vim
@@ -241,7 +257,7 @@ endfunction
 command! -nargs=0 Ts call ToggleTabStop()
 
 " toggle what the tab key inserts (e.g. tabs or spaces)
-fu! ToggleTabKey()
+function! ToggleTabKey()
   if &expandtab
     echo "Disabling expandtab"
     set noexpandtab
@@ -249,11 +265,15 @@ fu! ToggleTabKey()
     echo "Enabling expandtab"
     set expandtab
   endif
-endf
+endfunction
 
-fu RemoteExtraWhitespace()
+function RemoteExtraWhitespace()
     exec ":%s/\s\+$//"
-endf
+endfunction
+
+function EnablePrintLineNumbers()
+    exec ":set printoptions=number:y"
+endfunction
 
 command! -nargs=0 Tk call ToggleTabKey()
 
