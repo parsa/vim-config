@@ -1,5 +1,5 @@
 " Maintainer:		Parsa Amini
-" Last Update:		Tue Oct 30 2014
+" Last Update:		Mon Mar 30 2015
 
 """"""""""""""""""""""
 " Legacy Vi behavior "
@@ -47,10 +47,11 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
-Plugin 'wincent/command-t'
-Plugin 'zerowidth/vim-copy-as-rtf'
 " Installation
 " cd ~/.vim/bundle/command-t/ruby/command-t && ruby extconf.rb && make
+Plugin 'wincent/command-t'
+" Mac only
+Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'yegappan/mru'
 
