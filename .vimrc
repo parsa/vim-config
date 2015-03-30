@@ -72,6 +72,9 @@ call vundle#end()            " required
 " filters "
 """""""""""
 
+" AStyle installation:
+" wget --content-disposition http://downloads.sf.net/project/astyle/astyle/astyle%202.05.1/astyle_2.05.1_linux.tar.gz
+" tar xf astyle_2.05.1_linux.tar.gz && cd astyle/build/gcc && make && cp bin/astyle ~/.local/bin
 " set equalprg=astyle\ --style=linux\ --indent=spaces\ --indent-namespaces\ --indent-labels\ --indent-col1-comments\ --break-blocks=all\ --pad-oper\ --pad-header\ --unpad-paren\ --delete-empty-lines\ --align-pointer=type\ --align-reference=type\ --remove-brackets
 autocmd FileType cpp,c setlocal equalprg=astyle\ --style=linux\ --indent=spaces\ --indent-namespaces\ --indent-labels\ --indent-col1-comments\ --pad-oper\ --pad-header\ --unpad-paren\ --align-pointer=type\ --align-reference=type
 
@@ -137,18 +140,14 @@ set guifont=Consolas
 """""""""""""""
 set pastetoggle=<f5>
 noremap <f1> <nop>
-map <f2> :!cmake -GNinja .
-map <s-f2> :!cmake .
-map <f3> :!ninja
-map <s-f3> :!make
-
-map <f6> :!find\ -iname\ '*cmake*'\ -not\ -name\ CMakeLists.txt\ -exec\ rm\ -rf\ {}\ \\+
-
+"map <f3> :!ninja<cr>
+"map <s-f3> :!make<cr>
+nnoremap <f12> :!ctags -R<cr>
 
 """"""""""""
 " NERDTree "
 """"""""""""
-nmap <f4> :NERDTreeToggle
+nmap <f4> :NERDTreeToggle<cr>
 
 
 """""""""""""""""
@@ -268,15 +267,16 @@ function! ToggleTabKey()
   endif
 endfunction
 
-function RemoteExtraWhitespace()
-    exec ":%s/\s\+$//"
-endfunction
-
-function EnablePrintLineNumbers()
-    exec ":set printoptions=number:y"
-endfunction
-
 command! -nargs=0 Tk call ToggleTabKey()
+
+command! -nargs=0 RemoteExtraWhitespace
+\ exec ":%s/\s\+$//"
+
+command! -nargs=0 EnablePrintLineNumbers
+\ exec ":set printoptions=number:y"
+
+command -nargs=0 CleanCMake
+\ exec ":!find\ -iname\ '*cmake*'\ -not\ -name\ CMakeLists.txt\ -exec\ rm\ -rf\ {}\ \\+"
 
 " insert a C++-style UUID identifier at the cursor
 command! -nargs=0 UUID
