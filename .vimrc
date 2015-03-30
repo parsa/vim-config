@@ -39,6 +39,7 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-abolish'
 Plugin 'Valloric/YouCompleteMe'
 " Installation: cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 Plugin 'Valloric/ListToggle'
@@ -202,7 +203,7 @@ set directory=~/.vim/swp//
 
 
 """""""""
-" seach "
+" search "
 """""""""
 
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@<CR><CR>
