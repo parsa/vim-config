@@ -1,5 +1,5 @@
 " Maintainer:		Parsa Amini
-" Last Update:		Mon Mar 30 2015
+" Last Update:		Mon Apr 05 2015
 
 """"""""""""""""""""""
 " Legacy Vi behavior "
@@ -29,15 +29,8 @@ set hidden
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'Valloric/YouCompleteMe'
@@ -54,6 +47,8 @@ Plugin 'wincent/command-t'
 Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'yegappan/mru'
+Plugin 'bling/vim-airline'
+Plugin 'sjl/gundo.vim.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -139,16 +134,21 @@ set guifont=Consolas
 """""""""""""""
 " keybindings "
 """""""""""""""
-set pastetoggle=<f5>
+set pastetoggle=<leader>p
+" Disable F1
 noremap <f1> <nop>
-"map <f3> :!ninja<cr>
-"map <s-f3> :!make<cr>
-nnoremap <f12> :!ctags -R<cr>
-
-""""""""""""
+" Gundo Tree Visualizer
+noremap <leader>h :GundoToggle<cr>
+"noremap <f3> :!ninja<cr>
+"noremap <s-f3> :!make<cr>
+"" CTags
+"nnoremap <f12> :!ctags -R<cr>
 " NERDTree "
-""""""""""""
-nmap <f4> :NERDTreeToggle<cr>
+noremap <f3> :NERDTreeToggle<cr>
+" Tagbar
+noremap <f4> :TagbarToggle<cr>
+" MiniBufferExplorer
+noremap <f2> :MBEToggle<cr>
 
 
 """""""""""""""""
@@ -200,6 +200,9 @@ set backup
 set backupdir=~/.vim/bkp//
 " change swp file locations
 set directory=~/.vim/swp//
+
+"set exrc
+"set secure
 
 
 """""""""
